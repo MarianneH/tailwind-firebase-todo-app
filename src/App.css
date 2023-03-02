@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight&family=Open+Sans&family=Roboto");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #f7ede2;
+  font-family: "Inter Tight", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.todos {
+  background-color: #84a59d;
+  width: 70vw;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+form {
+  padding: 1rem;
+}
+form input {
+  padding: 0.5rem 0.5rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  border: 1px solid white;
+  width: 30vw;
+}
+form button {
+  background-color: #84a59d;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  margin: 1rem;
+  border: none;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+form button:hover {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.App-link {
-  color: #61dafb;
+th {
+  font-weight: 900;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #f6bd60;
+  padding-bottom: 0.5rem;
+}
+.row {
+  height: 2.5rem;
+}
+.dark {
+  background-color: #93b8ae;
+}
+.title {
+  font-size: 1rem;
+  font-weight: 900;
+  padding-left: 1rem;
+}
+.tableRow {
+  width: 100%;
+  text-align: left;
+}
+.tableRow th:first-of-type {
+  width: 7rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table_button {
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  border-radius: 3px;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.done {
+  background-color: rgb(103, 167, 103);
+}
+.button_col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.delete {
+  width: 5rem;
+  text-align: center;
 }
