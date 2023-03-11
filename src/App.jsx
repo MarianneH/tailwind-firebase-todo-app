@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { v1 as uuidv1 } from "uuid";
+
 import { TbTrashX } from "react-icons/tb";
+import TodoForm from "./component/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -24,19 +25,6 @@ function App() {
   ]);
   const [elemToRemove, setElemToRemove] = useState(null);
   const [elemDone, setElemDone] = useState(null);
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    if (e.target.todo.value) {
-      let todo = e.target.todo.value;
-      e.target.todo.value = "";
-      let id = uuidv1();
-
-      setTodos((prev) => [
-        ...prev,
-        { id: uuidv1(), name: todo, isDone: false, timestamp: new Date() },
-      ]);
-    }
-  }
 
   useEffect(() => {
     setTodos((prev) => prev.filter((el) => el.id !== elemToRemove));
@@ -54,17 +42,9 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>As good as done</h1>
-      <form action="" onSubmit={handleFormSubmit}>
-        <input
-          type="text"
-          name="todo"
-          id="todo"
-          placeholder="what needs to be done?"
-        />
-        <button>+ add todo</button>
-      </form>
+    <div className="flex-row">
+      <h1 className="text-3xl font-bold justify-center">As good as done</h1>
+      <TodoForm setTodos={setTodos} />
       <div className="todos">
         <table className="tableRow">
           <tr>
