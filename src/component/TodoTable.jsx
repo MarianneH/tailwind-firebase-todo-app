@@ -5,8 +5,8 @@ function TodoTable({ todos, toggleDone, setElemToRemove }) {
   return (
     <table className="w-11/12 pt-6 bg-white  border-collapse rounded-lg text-sm">
       <tr className="font-medium">
-        <th className="w-7"></th>
-        <th className="text-left">Title</th>
+        <th className="w-7 py-4"></th>
+        <th className="text-left">List of Todos</th>
         <th className="text-right  w-auto">Creation Date</th>
         <th className="w-8"></th>
       </tr>
@@ -14,13 +14,13 @@ function TodoTable({ todos, toggleDone, setElemToRemove }) {
         return (
           <tr
             key={index}
-            className={index % 2 === 0 ? "bg-teal-200" : "bg-teal-300"}
+            className={index % 2 === 0 ? "bg-violet-200" : "bg-violet-300"}
           >
             <td>
               <button
                 className={
                   el.isDone
-                    ? "bg-green-800 rounded-sm w-full ml-2"
+                    ? "bg-gray-400 rounded-sm w-full ml-2"
                     : "bg-white rounded-sm w-full ml-2"
                 }
                 onClick={() => toggleDone(el)}
