@@ -39,13 +39,28 @@ function Todos() {
   };
   return (
     <div className="flex flex-col items-center mt-4">
-      <h1 className="text-3xl font-bold justify-center">As Good As Done</h1>
+      <h1 className="text-3xl font-bold justify-center inline-block">
+        As Good As Done
+        <img
+          src="logo.svg"
+          alt="purple circle with a check mark"
+          className="w-6 ml-4 inline-block"
+        />
+      </h1>
       <TodoForm setTodos={setTodos} />
       <TodoTable
         todos={todos}
         toggleDone={toggleDone}
         setElemToRemove={setElemToRemove}
       />
+      <div className="flex flex-col items-center mt-16 w-full">
+        <TodoTable
+          todos={todos}
+          toggleDone={toggleDone}
+          setElemToRemove={setElemToRemove}
+          done
+        />
+      </div>
     </div>
   );
 }

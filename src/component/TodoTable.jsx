@@ -1,13 +1,13 @@
 import React from "react";
 import { TbTrashX } from "react-icons/tb";
 
-function TodoTable({ todos, toggleDone, setElemToRemove }) {
+function TodoTable({ todos, toggleDone, setElemToRemove, done }) {
   return (
     <table className="w-11/12 pt-6 bg-white  border-collapse rounded-lg text-sm">
       <thead className="font-medium">
         <tr>
           <th className="w-7 py-4"></th>
-          <th className="text-left">List of Todos</th>
+          <th className="text-left">{done ? "Done" : "List of Todos"}</th>
           <th className="text-right  w-auto">Creation Date</th>
           <th className="w-8"></th>
         </tr>
@@ -17,7 +17,15 @@ function TodoTable({ todos, toggleDone, setElemToRemove }) {
           return (
             <tr
               key={index}
-              className={index % 2 === 0 ? "bg-violet-200" : "bg-violet-300"}
+              className={
+                !done
+                  ? index % 2 === 0
+                    ? "bg-violet-200"
+                    : "bg-violet-300"
+                  : index % 2 === 0
+                  ? "bg-gray-200"
+                  : "bg-gray-300"
+              }
             >
               <td>
                 <button
