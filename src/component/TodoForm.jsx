@@ -15,13 +15,17 @@ function TodoForm({ setTodos }) {
     }
   }
   return (
-    <form className="w-full p-4" action="" onSubmit={handleFormSubmit}>
+    <form
+      className="w-full p-4 flex justify-center"
+      action=""
+      onSubmit={handleFormSubmit}
+    >
       <input
         type="text"
         className="px-4 py-2 w-auto md:w-9/12 mr-2 bg-white rounded-lg"
         name="todo"
         id="todo"
-        placeholder="what needs to be done?"
+        placeholder="add next todo"
       />
       <button className="border-none rounded-lg px-4 py-2 bg-teal-500 hover:bg-teal-600 hover:drop-shadow-md">
         + add todo

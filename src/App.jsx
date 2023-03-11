@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-
 import { TbTrashX } from "react-icons/tb";
 import TodoForm from "./component/TodoForm";
+import TodoTable from "./component/TodoTable";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -42,44 +42,14 @@ function App() {
   };
 
   return (
-    <div className="flex-row">
+    <div className="flex flex-col items-center mt-4">
       <h1 className="text-3xl font-bold justify-center">As good as done</h1>
       <TodoForm setTodos={setTodos} />
-      <div className="todos">
-        <table className="tableRow">
-          <tr>
-            <th>Done?</th>
-            <th>Title</th>
-            <th>Date of creation</th>
-            <th>remove?</th>
-          </tr>
-          {todos.map((el, index) => {
-            return (
-              <tr key={index} className={index % 2 === 0 ? "row dark" : "row"}>
-                <td className="button_col">
-                  <button
-                    className={
-                      el.isDone ? "table_button done" : "table_button "
-                    }
-                    onClick={() => toggleDone(el)}
-                  >
-                    {el.isDone ? `✓` : "x"}
-                  </button>
-                  {el.isDone ? <div>done</div> : <div>TODO</div>}
-                </td>
-                <td className="title">{el.name}</td>
-                <td>
-                  {el.timestamp.toString().split("").splice(0, 15).join("")}{" "}
-                </td>
-
-                <td className="delete">
-                  <TbTrashX onClick={() => setElemToRemove(el.id)} />
-                </td>
-              </tr>
-            );
-          })}
-        </table>
-      </div>
+      <TodoTable
+        todos={todos}
+        toggleDone={toggleDone}
+        setElemToRemove={setElemToRemove}
+      />
     </div>
   );
 }
