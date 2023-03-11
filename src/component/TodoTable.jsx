@@ -23,8 +23,8 @@ function TodoTable({ todos, toggleDone, setElemToRemove }) {
                 <button
                   className={
                     el.isDone
-                      ? "bg-gray-400 rounded-sm w-full ml-2"
-                      : "bg-white rounded-sm w-full ml-2"
+                      ? "bg-violet-900 rounded-full w-full ml-2 text-white"
+                      : "bg-white rounded-full w-full ml-2"
                   }
                   onClick={() => toggleDone(el)}
                 >

@@ -1,6 +1,6 @@
 import React from "react";
 import { v1 as uuidv1 } from "uuid";
-import { doc, addDoc, collection, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 function TodoForm({ setTodos }) {
@@ -11,13 +11,15 @@ function TodoForm({ setTodos }) {
     if (e.target.todo.value) {
       let todo = e.target.todo.value;
       let timeStamp = new Date();
-      let todoObject = { todo: todo, id: id, timeStamp: timeStamp };
+      let todoObject = {
+        todo: todo,
+        id: id,
+        timeStamp: timeStamp,
+        isDone: false,
+      };
       e.target.todo.value = "";
       try {
         const docRef = await addDoc(collection(db, "todos"), todoObject);
-        await setDoc(doc(db, "todos", docRef.id), {
-          storeId: docRef.id,
-        });
       } catch (err) {
         console.error(err);
       }
