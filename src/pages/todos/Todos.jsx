@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import TodoForm from "../component/TodoForm";
-import TodoTable from "../component/TodoTable";
+import TodoForm from "../../component/TodoForm";
+import TodoTable from "../../component/TodoTable";
 
 function Todos() {
   const [todos, setTodos] = useState([
@@ -22,7 +22,6 @@ function Todos() {
     },
   ]);
   const [elemToRemove, setElemToRemove] = useState(null);
-  const [elemDone, setElemDone] = useState(null);
 
   useEffect(() => {
     setTodos((prev) => prev.filter((el) => el.id !== elemToRemove));
