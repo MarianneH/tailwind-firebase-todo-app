@@ -1,24 +1,38 @@
 import React from "react";
 import { v1 as uuidv1 } from "uuid";
+import { doc, addDoc, collection, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 function TodoForm({ setTodos }) {
-  function handleFormSubmit(e) {
+  const handleAddTodo = async (e) => {
     e.preventDefault();
+
+    const id = uuidv1();
     if (e.target.todo.value) {
       let todo = e.target.todo.value;
+      let timeStamp = new Date();
+      let todoObject = { todo: todo, id: id, timeStamp: timeStamp };
       e.target.todo.value = "";
+      try {
+        const docRef = await addDoc(collection(db, "todos"), todoObject);
+        await setDoc(doc(db, "todos", docRef.id), {
+          storeId: docRef.id,
+        });
+      } catch (err) {
+        console.error(err);
+      }
 
       setTodos((prev) => [
         ...prev,
-        { id: uuidv1(), name: todo, isDone: false, timestamp: new Date() },
+        { id: id, name: todo, isDone: false, timestamp: new Date() },
       ]);
     }
-  }
+  };
   return (
     <form
       className="w-full p-4 flex justify-center"
       action=""
-      onSubmit={handleFormSubmit}
+      onSubmit={handleAddTodo}
     >
       <input
         type="text"
