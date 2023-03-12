@@ -28,25 +28,6 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
-  useEffect(() => {
-    async function fetchTodosFromDb() {
-      let todos = [];
-      const querySnapshot = await getDocs(
-        collection(db, "users", currentUser.uid, "todos")
-      );
-      querySnapshot.forEach((doc) => {
-        todos.push(doc.id);
-      });
-    }
-    if (currentUser) {
-      fetchTodosFromDb();
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
-
   return (
     <AuthContext.Provider
       value={{

@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import TodoForm from "../../component/TodoForm";
 import TodoTable from "../../component/TodoTable";
+import { useAuthContext } from "../../context/AuthContext";
+import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
 
 function Todos() {
+  const { currentUser } = useAuthContext();
+
+  useEffect(() => {
+    if (currentUser) fetchTodosFromDb(currentUser.uid);
+  }, [currentUser]);
+
   const [todos, setTodos] = useState([
     {
       id: 1,
