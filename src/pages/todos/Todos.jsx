@@ -29,11 +29,11 @@ function Todos() {
 
   const toggleDone = (element) => {
     setTodos(
-      [...todos].map((singleTodo) => {
-        if (singleTodo.id === element.id) {
-          singleTodo.isDone = !singleTodo.isDone;
+      [...todos].map((todo) => {
+        if (todo.id === element.id) {
+          todo.isDone = !todo.isDone;
         }
-        return singleTodo;
+        return todo;
       })
     );
   };

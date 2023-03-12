@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../component/Button";
 import InputField from "../../component/InputField";
+import { useAuthContext } from "../../context/AuthContext";
 import { handleUserRegistration } from "./handleUserRegistration";
 
 function Register() {
   const [registrationFailed, setRegistrationFailed] = useState(false);
+  const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) navigate("/todos");
+  }, [currentUser, navigate]);
 
   return (
     <div className="flex flex-col items-center mt-4">
       <h1 className="text-3xl">Welcome! Register here</h1>
       <div>Go ahead and register now!</div>
       <form
-        action=""
         className="flex flex-col items-center w-2/3"
         onSubmit={(e) =>
           handleUserRegistration(e).then((result) =>

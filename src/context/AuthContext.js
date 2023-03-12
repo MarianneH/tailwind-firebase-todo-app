@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { auth } from "../firebase/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { db } from "../firebase/firebase";
 import { getDocs, collection } from "firebase/firestore";
 
@@ -28,24 +28,6 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
-  const isLoggedIn = (currentUser) => {
-    if (currentUser) {
-      return true;
-    }
-    return false;
-  };
-
-  const logOut = (auth) => {
-    //does this need a prop to work?
-    signOut(auth)
-      .then(() => {
-        setCurrentUser(null);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
   useEffect(() => {
     async function fetchTodosFromDb() {
       let todos = [];
@@ -61,13 +43,15 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, [currentUser]);
 
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
+
   return (
     <AuthContext.Provider
       value={{
         currentUser,
         setCurrentUser,
-        isLoggedIn,
-        logOut,
       }}
     >
       {loading ? null : children}
