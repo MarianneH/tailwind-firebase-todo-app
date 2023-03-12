@@ -10,5 +10,5 @@ export async function fetchTodosFromDb(currentUserId) {
     const el = { id: doc.id, ...doc.data() };
     todos.push(el);
   });
-  console.log(todos);
+  return todos;
 }

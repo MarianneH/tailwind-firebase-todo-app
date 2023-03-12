@@ -4,14 +4,17 @@ import Button from "../Button";
 import { useAuthContext } from "../../context/AuthContext";
 import { sendTodoToDb } from "./sendTodoToDb";
 
-function TodoForm() {
+function TodoForm({ setUpdateData }) {
   const { currentUser } = useAuthContext();
 
   return (
     <form
       className="w-full p-4 flex justify-center"
       action=""
-      onSubmit={(e) => sendTodoToDb(e, currentUser)}
+      onSubmit={(e) => {
+        sendTodoToDb(e, currentUser);
+        setUpdateData((prev) => !prev);
+      }}
     >
       <InputField
         type="text"

@@ -6,29 +6,13 @@ import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
 
 function Todos() {
   const { currentUser } = useAuthContext();
-
+  const [todos, setTodos] = useState([]);
+  const [updateData, setUpdateData] = useState(false);
   useEffect(() => {
-    if (currentUser) fetchTodosFromDb(currentUser.uid);
-  }, [currentUser]);
+    if (currentUser)
+      fetchTodosFromDb(currentUser.uid).then((result) => setTodos(result));
+  }, [currentUser, updateData]);
 
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      name: "todo",
-      isDone: false,
-      timestamp: new Date(),
-      isUrgent: false,
-      isImportant: false,
-    },
-    {
-      id: 2,
-      name: "hello",
-      isDone: true,
-      timestamp: new Date(),
-      isUrgent: false,
-      isImportant: false,
-    },
-  ]);
   const [elemToRemove, setElemToRemove] = useState(null);
 
   useEffect(() => {
@@ -55,20 +39,24 @@ function Todos() {
           className="w-6 ml-4 inline-block"
         />
       </h1>
-      <TodoForm setTodos={setTodos} />
-      <TodoTable
-        todos={todos}
-        toggleDone={toggleDone}
-        setElemToRemove={setElemToRemove}
-      />
-      <div className="flex flex-col items-center mt-16 w-full">
-        <TodoTable
-          todos={todos}
-          toggleDone={toggleDone}
-          setElemToRemove={setElemToRemove}
-          done
-        />
-      </div>
+      <TodoForm setUpdateData={setUpdateData} />
+      {todos[0] && (
+        <>
+          <TodoTable
+            todos={todos}
+            toggleDone={toggleDone}
+            setElemToRemove={setElemToRemove}
+          />
+          <div className="flex flex-col items-center mt-16 w-full">
+            <TodoTable
+              todos={todos}
+              toggleDone={toggleDone}
+              setElemToRemove={setElemToRemove}
+              done
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
