@@ -3,15 +3,23 @@ import TodoForm from "../../component/TodoForm";
 import TodoTable from "../../component/TodoTable";
 import { useAuthContext } from "../../context/AuthContext";
 import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
+import { filterOpenTodos } from "./filterOpenTodos";
 
 function Todos() {
   const { currentUser } = useAuthContext();
   const [todos, setTodos] = useState([]);
+  const [openTodos, setOpenTodos] = useState([]);
+  const [closedTodos, setClosedTodos] = useState([]);
   const [updateData, setUpdateData] = useState(false);
   useEffect(() => {
     if (currentUser)
-      fetchTodosFromDb(currentUser.uid).then((result) => setTodos(result));
+      fetchTodosFromDb(currentUser.uid).then((result) => {
+        setTodos(result);
+        setOpenTodos(filterOpenTodos(result));
+      });
   }, [currentUser, updateData]);
+
+  console.log(todos);
 
   const [elemToRemove, setElemToRemove] = useState(null);
 
@@ -43,7 +51,7 @@ function Todos() {
       {todos[0] && (
         <>
           <TodoTable
-            todos={todos}
+            todos={openTodos}
             toggleDone={toggleDone}
             setElemToRemove={setElemToRemove}
           />
