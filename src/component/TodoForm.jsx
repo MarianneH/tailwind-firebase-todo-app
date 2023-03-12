@@ -2,6 +2,8 @@ import React from "react";
 import { v1 as uuidv1 } from "uuid";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import InputField from "./InputField";
+import Button from "./Button";
 
 function TodoForm({ setTodos }) {
   const handleAddTodo = async (e) => {
@@ -36,16 +38,15 @@ function TodoForm({ setTodos }) {
       action=""
       onSubmit={handleAddTodo}
     >
-      <input
+      <InputField
         type="text"
-        className="px-4 py-2 w-auto md:w-9/12 mr-2 bg-white rounded-lg drop-shadow-md"
         name="todo"
         id="todo"
         placeholder="add next todo"
       />
-      <button className="border-none text-white rounded-lg px-4 py-2 bg-violet-500 hover:bg-violet-600 hover:drop-shadow-md">
+      <Button className="border-none text-white rounded-lg px-4 py-2 bg-violet-500 hover:bg-violet-600 hover:drop-shadow-md">
         + add todo
-      </button>
+      </Button>
     </form>
   );
 }
