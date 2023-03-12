@@ -3,6 +3,7 @@ import TodoForm from "../../component/TodoForm";
 import TodoTable from "../../component/TodoTable";
 import { useAuthContext } from "../../context/AuthContext";
 import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
+import { filterClosedTodos } from "./filterClosedTodos";
 import { filterOpenTodos } from "./filterOpenTodos";
 
 function Todos() {
@@ -16,6 +17,7 @@ function Todos() {
       fetchTodosFromDb(currentUser.uid).then((result) => {
         setTodos(result);
         setOpenTodos(filterOpenTodos(result));
+        setClosedTodos(filterClosedTodos(result));
       });
   }, [currentUser, updateData]);
 
@@ -57,7 +59,7 @@ function Todos() {
           />
           <div className="flex flex-col items-center mt-16 w-full">
             <TodoTable
-              todos={todos}
+              todos={closedTodos}
               toggleDone={toggleDone}
               setElemToRemove={setElemToRemove}
               done
