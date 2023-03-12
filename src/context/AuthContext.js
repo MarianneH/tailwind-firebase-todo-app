@@ -3,7 +3,6 @@ import { auth } from "../firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { db } from "../firebase/firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { useRouter } from "next/router";
 
 export const AuthContext = createContext();
 
@@ -12,7 +11,6 @@ export function useAuthContext() {
 }
 
 export const AuthContextProvider = ({ children }) => {
-  const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -42,15 +40,14 @@ export const AuthContextProvider = ({ children }) => {
     signOut(auth)
       .then(() => {
         setCurrentUser(null);
-        router.push("/");
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-  async function fetchTodosFromDb() {
-    if (currentUser) {
+  useEffect(() => {
+    async function fetchTodosFromDb() {
       let todos = [];
       const querySnapshot = await getDocs(
         collection(db, "users", currentUser.uid, "todos")
@@ -59,9 +56,6 @@ export const AuthContextProvider = ({ children }) => {
         todos.push(doc.id);
       });
     }
-  }
-
-  useEffect(() => {
     if (currentUser) {
       fetchTodosFromDb();
     }

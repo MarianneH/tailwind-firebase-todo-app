@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Todos from "./pages/todos";
+import "./App.css";
 
 function App() {
   return (

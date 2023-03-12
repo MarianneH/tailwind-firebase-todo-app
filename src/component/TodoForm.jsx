@@ -4,8 +4,10 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import InputField from "./InputField";
 import Button from "./Button";
+import { useAuthContext } from "../context/AuthContext";
 
 function TodoForm({ setTodos }) {
+  const { currentUser } = useAuthContext();
   const handleAddTodo = async (e) => {
     e.preventDefault();
 
@@ -21,7 +23,10 @@ function TodoForm({ setTodos }) {
       };
       e.target.todo.value = "";
       try {
-        const docRef = await addDoc(collection(db, "todos"), todoObject);
+        const docRef = await addDoc(
+          collection(db, "users", currentUser.uid, "todos"),
+          todoObject
+        );
       } catch (err) {
         console.error(err);
       }
