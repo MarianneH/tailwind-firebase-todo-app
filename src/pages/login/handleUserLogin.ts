@@ -1,10 +1,10 @@
 import { auth } from "../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-export const handleUserLogin = async (e) => {
+export const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
+  const email = e.currentTarget.email.value;
+  const password = e.currentTarget.password.value;
 
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
