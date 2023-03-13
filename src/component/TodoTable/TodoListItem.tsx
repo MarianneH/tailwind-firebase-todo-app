@@ -14,17 +14,14 @@ interface Todo {
   id: String;
 }
 
-function TodoListItem({
-  done,
-  index,
-  todo,
-  setUpdateData,
-}: {
+interface TodoListItemType {
   done: boolean;
   index: number;
   todo: Todo;
   setUpdateData: Dispatch<SetStateAction<boolean>>;
-}) {
+}
+
+function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
   const { currentUser } = useAuthContext();
 
   return (
