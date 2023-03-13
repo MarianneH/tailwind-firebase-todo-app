@@ -24,7 +24,6 @@ function Login() {
           handleUserLogin(e).then((result) => {
             setLoginFailed(result[0]);
             setCurrentUser(result[1]);
-            console.log("reslt", result[0]);
             if (!result[0]) navigate("/todos");
           })
         }

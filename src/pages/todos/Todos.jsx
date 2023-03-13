@@ -21,22 +21,6 @@ function Todos() {
       });
   }, [currentUser, updateData]);
 
-  const [elemToRemove, setElemToRemove] = useState(null);
-
-  useEffect(() => {
-    setTodos((prev) => prev.filter((el) => el.id !== elemToRemove));
-  }, [elemToRemove]);
-
-  const toggleDone = (element) => {
-    setTodos(
-      [...todos].map((todo) => {
-        if (todo.id === element.id) {
-          todo.isDone = !todo.isDone;
-        }
-        return todo;
-      })
-    );
-  };
   return (
     <div className="flex flex-col items-center mt-4">
       <h1 className="text-3xl font-bold justify-center inline-block">
@@ -50,18 +34,9 @@ function Todos() {
       <TodoForm setUpdateData={setUpdateData} />
       {todos[0] && (
         <>
-          <TodoTable
-            todos={openTodos}
-            toggleDone={toggleDone}
-            setElemToRemove={setElemToRemove}
-          />
+          <TodoTable todos={openTodos} setUpdateData={setUpdateData} />
           <div className="flex flex-col items-center mt-16 w-full">
-            <TodoTable
-              todos={closedTodos}
-              toggleDone={toggleDone}
-              setElemToRemove={setElemToRemove}
-              done
-            />
+            <TodoTable todos={closedTodos} done setUpdateData={setUpdateData} />
           </div>
         </>
       )}
