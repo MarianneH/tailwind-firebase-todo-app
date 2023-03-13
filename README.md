@@ -20,7 +20,6 @@ This is a React Application is bootstrapped using <a href="https://create-react-
 
 ## Possibile Iterations
 
-- Add TS
 - Add testing
 - Add Eisenhower Matrix functionality
 - Add daily repeating tasks
