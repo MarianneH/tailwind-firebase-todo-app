@@ -10,7 +10,6 @@ function TodoForm({ setUpdateData }) {
   return (
     <form
       className="w-full p-4 flex justify-center"
-      action=""
       onSubmit={(e) => {
         sendTodoToDb(e, currentUser);
         setUpdateData((prev) => !prev);

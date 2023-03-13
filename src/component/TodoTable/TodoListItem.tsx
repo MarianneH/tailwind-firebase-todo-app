@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { TbTrashX } from "react-icons/tb";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertMsToGermanDate } from "./convertMsToGermanDate";
 import { handleDeleteTodoFromDb } from "./handleDeleteTodoFromDb";
 import { handleSetTodoDoneInDb } from "./handleSetTodoDoneInDb";
 
-function TodoListItem({ done, index, todo, setUpdateData }) {
+interface Todo {
+  isDone: boolean;
+  todo: String;
+  timeStamp: {
+    seconds: number;
+  };
+  id: String;
+}
+
+function TodoListItem({
+  done,
+  index,
+  todo,
+  setUpdateData,
+}: {
+  done: boolean;
+  index: number;
+  todo: Todo;
+  setUpdateData: Dispatch<SetStateAction<boolean>>;
+}) {
   const { currentUser } = useAuthContext();
 
   return (
@@ -30,7 +49,7 @@ function TodoListItem({ done, index, todo, setUpdateData }) {
             }
             onClick={() => {
               handleSetTodoDoneInDb(done, currentUser.uid, todo.id).then(() => {
-                setUpdateData((prev) => !prev);
+                setUpdateData((prev: boolean) => !prev);
               });
             }}
           >
@@ -47,7 +66,7 @@ function TodoListItem({ done, index, todo, setUpdateData }) {
             className="cursor-pointer text-lg"
             onClick={() =>
               handleDeleteTodoFromDb(currentUser.uid, todo.id).then(() => {
-                setUpdateData((prev) => !prev);
+                setUpdateData((prev: boolean) => !prev);
               })
             }
           />
