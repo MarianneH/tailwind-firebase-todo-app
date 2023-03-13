@@ -12,13 +12,13 @@ This is a React Application is bootstrapped using <a href="https://create-react-
 - run the development server
   `npm start`
 
-# Other Dependencies
+## Other Dependencies
 
 - <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>
 - <a href="https://reactrouter.com/en/main" target="_blank">React Router Dom</a>
 - <a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a>
 
-# Possibile Iterations
+## Possibile Iterations
 
 - Add Eisenhower Matrix functionality
 - Add daily repeating tasks
