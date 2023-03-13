@@ -9,7 +9,7 @@ function Logout() {
   const navigate = useNavigate();
   return (
     <AiOutlineLogout
-      className="m-5 p-1 fixed h-8 w-8 bottom-0 right-0 rounded-full text-white drop-shadow-md shadow-white bg-violet-500 hover:bg-violet-600 cursor-pointer"
+      className="m-5 p-1 fixed h-8 w-8 bottom-0 right-0 rounded-full text-white drop-shadow-md shadow-white bg-violet-500 hover:bg-violet-600 cursor-pointer active:bg-violet-900 transition-all"
       onClick={() => {
         handleUserLogout();
         setCurrentUser(null);
