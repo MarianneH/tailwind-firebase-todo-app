@@ -4,7 +4,7 @@ import { convertMsToGermanDate } from "./convertMsToGermanDate";
 
 function TodoTable({ todos, toggleDone, setElemToRemove, done }) {
   return (
-    <table className="w-11/12 pt-6 bg-white  border-collapse rounded-lg text-sm">
+    <table className="w-10/12 pt-6 bg-white border-collapse rounded-lg text-sm">
       <thead className="font-medium">
         <tr>
           <th className="w-8 py-4"></th>

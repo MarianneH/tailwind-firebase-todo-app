@@ -21,8 +21,6 @@ function Todos() {
       });
   }, [currentUser, updateData]);
 
-  console.log(todos);
-
   const [elemToRemove, setElemToRemove] = useState(null);
 
   useEffect(() => {
