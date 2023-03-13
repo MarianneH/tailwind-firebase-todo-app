@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { TbTrashX } from "react-icons/tb";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertMsToGermanDate } from "./convertMsToGermanDate";
@@ -23,6 +23,7 @@ interface TodoListItemType {
 
 function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
   const { currentUser } = useAuthContext();
+  const [hovered, setHovered] = useState(false);
 
   return (
     <>
@@ -39,10 +40,14 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
       >
         <td>
           <button
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
             className={
               todo.isDone
-                ? "bg-violet-900 rounded-full w-7 ml-2 text-white"
-                : "bg-white rounded-full w-7 ml-2"
+                ? hovered === false
+                  ? "bg-violet-900 rounded-full aspect-square w-7 ml-2 text-white hover:text-lg"
+                  : "bg-white rounded-full aspect-square w-7 ml-2 hover:text-lg"
+                : "bg-white rounded-full aspect-square w-7 ml-2 text-white hover:text-lg hover:bg-violet-900 transition-all"
             }
             onClick={() => {
               handleSetTodoDoneInDb(currentUser.uid, todo.id, done).then(() => {
@@ -50,7 +55,7 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
               });
             }}
           >
-            {todo.isDone ? "✓" : "x"}
+            {todo.isDone ? "✓" : hovered === true && "✓"}
           </button>
         </td>
         <td className="p-4 break-words">{todo.todo}</td>
