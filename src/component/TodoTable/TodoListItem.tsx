@@ -7,11 +7,11 @@ import { handleSetTodoDoneInDb } from "./handleSetTodoDoneInDb";
 
 interface Todo {
   isDone: boolean;
-  todo: String;
+  todo: string;
   timeStamp: {
     seconds: number;
   };
-  id: String;
+  id: string;
 }
 
 interface TodoListItemType {

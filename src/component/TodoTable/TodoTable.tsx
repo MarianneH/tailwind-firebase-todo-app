@@ -1,7 +1,22 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import TodoListItem from "./TodoListItem";
 
-function TodoTable({ todos, done, setUpdateData }) {
+interface Todo {
+  isDone: boolean;
+  todo: string;
+  timeStamp: {
+    seconds: number;
+  };
+  id: string;
+}
+
+interface TodoTableType {
+  todos: Todo[];
+  done: boolean;
+  setUpdateData: Dispatch<SetStateAction<boolean>>;
+}
+
+function TodoTable({ todos, done, setUpdateData }: TodoTableType) {
   return (
     <table className="w-10/12 pt-6 bg-white border-collapse rounded-lg text-sm">
       <thead className="font-medium">

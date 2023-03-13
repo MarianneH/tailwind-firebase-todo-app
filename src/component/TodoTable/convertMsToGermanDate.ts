@@ -1,4 +1,4 @@
-export function convertMsToGermanDate(seconds) {
+export function convertMsToGermanDate(seconds: number) {
   const date = new Date(seconds * 1000);
 
   const day = date.getDate().toString().padStart(2, "0");
