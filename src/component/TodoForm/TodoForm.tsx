@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import InputField from "../InputField";
 import Button from "../Button";
 import { useAuthContext } from "../../context/AuthContext";
 import { sendTodoToDb } from "./sendTodoToDb";
 
-function TodoForm({ setUpdateData }) {
+function TodoForm({
+  setUpdateData,
+}: {
+  setUpdateData: Dispatch<SetStateAction<boolean>>;
+}) {
   const { currentUser } = useAuthContext();
 
   return (
@@ -21,9 +25,7 @@ function TodoForm({ setUpdateData }) {
         id="todo"
         placeholder="add next todo"
       />
-      <Button className="border-none text-white rounded-lg px-4 py-2 bg-violet-500 hover:bg-violet-600 hover:drop-shadow-md">
-        + add todo
-      </Button>
+      <Button>+ add todo</Button>
     </form>
   );
 }
