@@ -1,6 +1,13 @@
 import React from "react";
 
-function InputField({ type, name, id, placeholder }) {
+interface InputFieldTypes {
+  type: string;
+  name: string;
+  id: string;
+  placeholder: string | undefined;
+}
+
+function InputField({ type, name, id, placeholder }: InputFieldTypes) {
   return (
     <input
       type={type}
