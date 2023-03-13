@@ -9,8 +9,8 @@ export const handleUserLogin = async (e: React.FormEvent<HTMLFormElement>) => {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    return [false, user];
+    return { failed: false, user: user };
   } catch (e) {
-    return [true, null];
+    return { failed: true, user: null };
   }
 };

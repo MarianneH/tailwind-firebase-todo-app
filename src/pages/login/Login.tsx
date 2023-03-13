@@ -22,9 +22,9 @@ function Login() {
         className="flex flex-col items-center w-2/3"
         onSubmit={(e) =>
           handleUserLogin(e).then((result) => {
-            setLoginFailed(result[0]);
-            setCurrentUser(result[1]);
-            if (!result[0]) navigate("/todos");
+            setLoginFailed(result.failed);
+            setCurrentUser(result.user);
+            if (!result.failed) navigate("/todos");
           })
         }
       >
