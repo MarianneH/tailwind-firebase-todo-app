@@ -32,7 +32,7 @@ function Todos() {
 
   return (
     <div className="flex flex-col items-center mt-10 mb-40">
-      <h1 className="text-3xl font-bold justify-center inline-block">
+      <h1>
         As Good As Done
         <img
           src="logo.svg"

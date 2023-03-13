@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../component/Button";
 import InputField from "../../component/InputField";
 import { useAuthContext } from "../../context/AuthContext";
@@ -15,9 +15,9 @@ function Login() {
   }, [currentUser, navigate]);
 
   return (
-    <div className="flex flex-col items-center mt-4">
-      <h1 className="text-3xl">Welcome Back!</h1>
-      <div>It's time to log in.</div>
+    <div className="flex flex-col items-center mt-4 h-screen justify-center">
+      <h1>Welcome Back!</h1>
+      <div className="text-white">It's time to log in.</div>
       <form
         className="flex flex-col items-center w-2/3"
         onSubmit={(e) =>
@@ -40,6 +40,12 @@ function Login() {
         )}
         <Button>Login</Button>
       </form>
+      <Link
+        to="/register"
+        className="dark:text-white mt-3 hover:shadow-white hover:underline"
+      >
+        Are you new here?
+      </Link>
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../component/Button";
 import InputField from "../../component/InputField";
 import { useAuthContext } from "../../context/AuthContext";
+import Login from "../login";
 import { handleUserRegistration } from "./handleUserRegistration";
 
 function Register() {
@@ -15,9 +16,9 @@ function Register() {
   }, [currentUser, navigate]);
 
   return (
-    <div className="flex flex-col items-center mt-4">
-      <h1 className="text-3xl">Welcome! Register here</h1>
-      <div>Go ahead and register now!</div>
+    <div className="flex flex-col items-center mt-4 h-screen justify-center">
+      <h1>Welcome! Register here</h1>
+      <div className="text-white">Go ahead and register now!</div>
       <form
         className="flex flex-col items-center w-2/3"
         onSubmit={(e) =>
@@ -50,6 +51,12 @@ function Register() {
         )}
         <Button>Register</Button>
       </form>
+      <Link
+        to="/login"
+        className="dark:text-white mt-3 hover:shadow-white hover:underline"
+      >
+        Are you a returning productivity nerd?
+      </Link>
     </div>
   );
 }
