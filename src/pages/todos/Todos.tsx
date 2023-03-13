@@ -7,14 +7,19 @@ import { filterClosedTodos } from "./filterClosedTodos";
 import { filterOpenTodos } from "./filterOpenTodos";
 
 interface Todo {
+  isDone: boolean;
+  todo: string;
+  timeStamp: {
+    seconds: number;
+  };
   id: string;
 }
 
 function Todos() {
   const { currentUser } = useAuthContext();
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [openTodos, setOpenTodos] = useState([]);
-  const [closedTodos, setClosedTodos] = useState([]);
+  const [openTodos, setOpenTodos] = useState<Todo[]>([]);
+  const [closedTodos, setClosedTodos] = useState<Todo[]>([]);
   const [updateData, setUpdateData] = useState(false);
   useEffect(() => {
     if (currentUser)
@@ -26,7 +31,7 @@ function Todos() {
   }, [currentUser, updateData]);
 
   return (
-    <div className="flex flex-col items-center mt-4">
+    <div className="flex flex-col items-center mt-10 mb-40">
       <h1 className="text-3xl font-bold justify-center inline-block">
         As Good As Done
         <img
@@ -38,7 +43,11 @@ function Todos() {
       <TodoForm setUpdateData={setUpdateData} />
       {todos[0] && (
         <>
-          <TodoTable todos={openTodos} setUpdateData={setUpdateData} />
+          <TodoTable
+            todos={openTodos}
+            done={false}
+            setUpdateData={setUpdateData}
+          />
           <div className="flex flex-col items-center mt-16 w-full">
             <TodoTable todos={closedTodos} done setUpdateData={setUpdateData} />
           </div>

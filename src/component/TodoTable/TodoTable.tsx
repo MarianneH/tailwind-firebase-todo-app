@@ -12,7 +12,7 @@ interface Todo {
 
 interface TodoTableType {
   todos: Todo[];
-  done?: boolean;
+  done: boolean;
   setUpdateData: Dispatch<SetStateAction<boolean>>;
 }
 

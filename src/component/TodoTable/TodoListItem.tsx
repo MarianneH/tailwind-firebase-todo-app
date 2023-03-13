@@ -15,10 +15,10 @@ interface Todo {
 }
 
 interface TodoListItemType {
-  done: boolean;
   index: number;
   todo: Todo;
   setUpdateData: Dispatch<SetStateAction<boolean>>;
+  done: boolean;
 }
 
 function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
@@ -45,7 +45,7 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
                 : "bg-white rounded-full w-7 ml-2"
             }
             onClick={() => {
-              handleSetTodoDoneInDb(done, currentUser.uid, todo.id).then(() => {
+              handleSetTodoDoneInDb(currentUser.uid, todo.id, done).then(() => {
                 setUpdateData((prev: boolean) => !prev);
               });
             }}
