@@ -17,9 +17,9 @@ function Login() {
   return (
     <div className="flex flex-col items-center mt-4 h-screen justify-center">
       <h1>Welcome Back!</h1>
-      <div className="text-white">It's time to log in.</div>
+      <div className="dark:text-white">It's time to log in.</div>
       <form
-        className="flex flex-col items-center w-2/3"
+        className="flex flex-col items-center w-3/4 max-w-lg"
         onSubmit={(e) =>
           handleUserLogin(e).then((result) => {
             setLoginFailed(result.failed);

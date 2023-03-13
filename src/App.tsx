@@ -6,11 +6,13 @@ import Todos from "./pages/todos";
 import "./App.css";
 import Logout from "./component/Logout";
 import PrivateRoutes from "./routes/ProtectedRoutes";
+import DarkModeToggle from "./component/DarkModeToggle";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <DarkModeToggle />
         <Logout />
         <Routes>
           <Route element={<PrivateRoutes />}>

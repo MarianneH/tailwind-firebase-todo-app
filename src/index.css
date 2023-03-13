@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-slate-300 dark:bg-gray-900;
+  body {
+    @apply bg-slate-300 dark:bg-gray-900 transition-all;
   }
   h1 {
-    @apply text-3xl font-bold justify-center inline-block dark:text-white;
+    @apply text-3xl font-bold justify-center inline-block dark:text-white mb-4;
   }
 }

@@ -14,7 +14,7 @@ function InputField({ type, name, id, placeholder }: InputFieldTypes) {
       name={name}
       id={id}
       placeholder={placeholder}
-      className="px-4 py-2 w-auto md:w-9/12 mt-2 mr-2 bg-white dark:bg-gray-600 rounded-lg drop-shadow-md"
+      className="px-4 py-2 w-full mt-2 mr-2 bg-white dark:bg-gray-600 rounded-lg drop-shadow-md"
     />
   );
 }

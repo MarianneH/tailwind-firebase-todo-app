@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../component/Button";
 import InputField from "../../component/InputField";
 import { useAuthContext } from "../../context/AuthContext";
-import Login from "../login";
 import { handleUserRegistration } from "./handleUserRegistration";
 
 function Register() {
@@ -16,11 +15,11 @@ function Register() {
   }, [currentUser, navigate]);
 
   return (
-    <div className="flex flex-col items-center mt-4 h-screen justify-center">
+    <div className="flex flex-col items-center h-screen justify-center">
       <h1>Welcome! Register here</h1>
-      <div className="text-white">Go ahead and register now!</div>
+      <div className="dark:text-white mb-4">Go ahead and register now!</div>
       <form
-        className="flex flex-col items-center w-2/3"
+        className="flex flex-col items-center w-3/4 max-w-lg"
         onSubmit={(e) =>
           handleUserRegistration(e).then((result) =>
             setRegistrationFailed(result)

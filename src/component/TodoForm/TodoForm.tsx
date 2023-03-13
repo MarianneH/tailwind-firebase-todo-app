@@ -13,7 +13,7 @@ function TodoForm({
 
   return (
     <form
-      className="w-full p-4 flex justify-center"
+      className="w-10/12 py-4 flex justify-center"
       onSubmit={(e) => {
         sendTodoToDb(e, currentUser.uid);
         setUpdateData((prev) => !prev);
