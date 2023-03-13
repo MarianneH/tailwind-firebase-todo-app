@@ -6,9 +6,13 @@ import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
 import { filterClosedTodos } from "./filterClosedTodos";
 import { filterOpenTodos } from "./filterOpenTodos";
 
+interface Todo {
+  id: string;
+}
+
 function Todos() {
   const { currentUser } = useAuthContext();
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [openTodos, setOpenTodos] = useState([]);
   const [closedTodos, setClosedTodos] = useState([]);
   const [updateData, setUpdateData] = useState(false);
