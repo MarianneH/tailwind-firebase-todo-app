@@ -18,6 +18,14 @@ This is a React Application is bootstrapped using <a href="https://create-react-
 - <a href="https://reactrouter.com/en/main" target="_blank">React Router Dom</a>
 - <a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a>
 
+## Features
+- user authentication by firebase
+  - registration, login, logout
+- managing todos
+  - adding / deleting
+  - setting done / not done
+- light / dark mode switch 
+
 ## Possibile Iterations
 
 - Add testing
