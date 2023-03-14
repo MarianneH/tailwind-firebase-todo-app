@@ -34,8 +34,8 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
               ? "bg-violet-200 dark:bg-violet-800"
               : "bg-violet-300 dark:bg-violet-700"
             : index % 2 === 0
-            ? "bg-gray-200 dark:bg-gray-800"
-            : "bg-gray-300 dark:bg-gray-700"
+            ? "bg-gray-200 dark:bg-gray-700"
+            : "bg-white dark:bg-gray-800"
         }
       >
         <td>

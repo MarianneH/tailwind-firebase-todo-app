@@ -17,7 +17,7 @@ function Login() {
   return (
     <div className="flex flex-col items-center mt-4 h-screen justify-center">
       <h1>Welcome Back!</h1>
-      <div className="dark:text-white">It's time to log in.</div>
+      <div className="dark:text-white mb-4">It's time to log in.</div>
       <form
         className="flex flex-col items-center w-3/4 max-w-lg"
         onSubmit={(e) =>

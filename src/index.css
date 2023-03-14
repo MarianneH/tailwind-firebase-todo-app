@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-300 dark:bg-gray-900 transition-all;
+    @apply bg-gray-100 dark:bg-gray-900 transition-all;
   }
   h1 {
     @apply text-3xl font-bold justify-center inline-block dark:text-white mb-4;
