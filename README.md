@@ -25,4 +25,3 @@ This is a React Application is bootstrapped using <a href="https://create-react-
 - Add daily repeating tasks
 - Add due date
 - Add Focus Mode - only show 5 most important tasks
-- Add Light/Dark Mode
