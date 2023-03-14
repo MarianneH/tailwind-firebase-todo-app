@@ -31,15 +31,8 @@ function Todos() {
   }, [currentUser, updateData]);
 
   return (
-    <div className="flex flex-col items-center mt-10 mb-40">
-      <h1>
-        As Good As Done
-        <img
-          src="logo.svg"
-          alt="purple circle with a check mark"
-          className="w-6 ml-4 inline-block"
-        />
-      </h1>
+    <div className="flex flex-col items-center mt-20 mb-40">
+      <h1>As Good As Done</h1>
       <TodoForm setUpdateData={setUpdateData} />
       {todos[0] && (
         <>

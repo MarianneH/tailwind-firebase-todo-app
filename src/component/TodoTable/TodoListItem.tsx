@@ -1,9 +1,9 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { TbTrashX } from "react-icons/tb";
 import { useAuthContext } from "../../context/AuthContext";
 import { convertMsToGermanDate } from "./convertMsToGermanDate";
 import { handleDeleteTodoFromDb } from "./handleDeleteTodoFromDb";
-import { handleSetTodoDoneInDb } from "./handleSetTodoDoneInDb";
+import CheckBubble from "./CheckBubble";
 
 interface Todo {
   isDone: boolean;
@@ -23,7 +23,6 @@ interface TodoListItemType {
 
 function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
   const { currentUser } = useAuthContext();
-  const [hovered, setHovered] = useState(false);
 
   return (
     <>
@@ -39,24 +38,13 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
         }
       >
         <td>
-          <button
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className={
-              todo.isDone
-                ? hovered === false
-                  ? "bg-violet-900 dark:bg-slate-300 rounded-full aspect-square w-7 ml-2 text-white dark:text-black hover:text-lg"
-                  : "bg-white rounded-full aspect-square w-7 ml-2 hover:text-lg"
-                : "bg-white dark:bg-violet-900 rounded-full aspect-square w-7 ml-2 text-white hover:text-lg hover:bg-violet-900 dark:hover:bg-white dark:text-black transition-all"
-            }
-            onClick={() => {
-              handleSetTodoDoneInDb(currentUser.uid, todo.id, done).then(() => {
-                setUpdateData((prev: boolean) => !prev);
-              });
-            }}
-          >
-            {todo.isDone ? "✓" : hovered === true && "✓"}
-          </button>
+          <CheckBubble
+            isDone={todo.isDone}
+            currentUserId={currentUser.uid}
+            todoId={todo.id}
+            done={done}
+            setUpdateData={setUpdateData}
+          />
         </td>
         <td className="p-4 break-words dark:text-white">{todo.todo}</td>
         <td className="text-right py-4 text-sm text-slate-500 dark:text-slate-400">
