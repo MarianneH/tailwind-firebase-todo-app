@@ -9,18 +9,17 @@ function Home() {
       <h2 className="text-xl md:text-2xl text-center mb-6 text-violet-700">
         AsGoodAsDone helps you getting hyperfocused
       </h2>
-      <h1 className="text-5xl md:text-6xl lg:text-7xl text-center mb-12">
+      <h1 className="text-5xl md:text-6xl lg:text-7xl text-center mb-6">
         Get things done that matter!
       </h1>
-
       <ul className="bg-violet-300 p-3 rounded-md text-lg mb-3">
+        <li>
+          <IoCheckmarkDoneSharp className="inline text-violet-600" /> do what
+          matters
+        </li>
         <li>
           <IoCheckmarkDoneSharp className="inline text-violet-600" /> manage
           tasks
-        </li>
-        <li>
-          <IoCheckmarkDoneSharp className="inline text-violet-600" /> do what's
-          important
         </li>
         <li>
           <IoCheckmarkDoneSharp className="inline text-violet-600" /> see what's
@@ -28,7 +27,7 @@ function Home() {
         </li>
         <li>
           <IoCheckmarkDoneSharp className="inline text-violet-600" /> activate
-          hyper focus mode ;)
+          hyperfocus mode ;)
         </li>
       </ul>
       <Link
