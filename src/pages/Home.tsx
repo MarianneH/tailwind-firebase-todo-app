@@ -45,7 +45,7 @@ function Home() {
             : "/todoscreenshot_d.png"
         }
         alt=""
-        className="-z-10 -mt-6 md:-mt-20 w-11/12 max-w-6xl"
+        className="-z-10 mt-2 md:-mt-6 w-full md:w-11/12  max-w-6xl"
       />
     </div>
   );
