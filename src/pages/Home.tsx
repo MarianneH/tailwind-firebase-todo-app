@@ -37,7 +37,13 @@ function Home() {
         <Button>Sign up now! →</Button>
       </Link>
       <img
-        src="/todoscreenshot.png"
+        src={
+          window.innerWidth < 600
+            ? "/todoscreenshot_m.png"
+            : window.innerWidth < 1200
+            ? "/todoscreenshot_t.png"
+            : "/todoscreenshot_d.png"
+        }
         alt=""
         className="-z-10 -mt-6 md:-mt-20 w-11/12 max-w-6xl"
       />

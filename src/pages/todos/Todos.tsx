@@ -22,7 +22,7 @@ function Todos() {
   const [openTodos, setOpenTodos] = useState<Todo[]>([]);
   const [closedTodos, setClosedTodos] = useState<Todo[]>([]);
   const [updateData, setUpdateData] = useState(false);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     if (currentUser)
       fetchTodosFromDb(currentUser.uid).then((result) => {
