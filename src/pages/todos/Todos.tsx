@@ -1,3 +1,4 @@
+import TodoModal from "../../component/TodoModal/TodoModal";
 import React, { useEffect, useState } from "react";
 import TodoForm from "../../component/TodoForm";
 import TodoTable from "../../component/TodoTable";
@@ -21,6 +22,7 @@ function Todos() {
   const [openTodos, setOpenTodos] = useState<Todo[]>([]);
   const [closedTodos, setClosedTodos] = useState<Todo[]>([]);
   const [updateData, setUpdateData] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     if (currentUser)
       fetchTodosFromDb(currentUser.uid).then((result) => {
@@ -45,6 +47,9 @@ function Todos() {
             <TodoTable todos={closedTodos} done setUpdateData={setUpdateData} />
           </div>
         </>
+      )}
+      {showModal && todos[1] && (
+        <TodoModal selectedTodo={todos[1]} setShowModal={setShowModal} />
       )}
     </div>
   );
