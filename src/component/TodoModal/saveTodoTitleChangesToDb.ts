@@ -12,4 +12,5 @@ export async function saveTodoTitleChangesToDb(
   await updateDoc(doc(db, "users", currentUserId, "todos", todoId), {
     todo: newTitle,
   });
+  return newTitle;
 }
