@@ -4,24 +4,25 @@ import { useAuthContext } from "../../context/AuthContext";
 import { convertMsToGermanDate } from "./convertMsToGermanDate";
 import { handleDeleteTodoFromDb } from "./handleDeleteTodoFromDb";
 import CheckBubble from "./CheckBubble";
-
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
+import { TodoProps } from "../../types/TodoProps";
 
 interface TodoListItemType {
   index: number;
-  todo: Todo;
+  todo: TodoProps;
   setUpdateData: Dispatch<SetStateAction<boolean>>;
   done: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setSelectedTodo: Dispatch<SetStateAction<TodoProps | undefined>>;
 }
 
-function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
+function TodoListItem({
+  done,
+  index,
+  todo,
+  setUpdateData,
+  setShowModal,
+  setSelectedTodo,
+}: TodoListItemType) {
   const { currentUser } = useAuthContext();
 
   return (
@@ -46,11 +47,18 @@ function TodoListItem({ done, index, todo, setUpdateData }: TodoListItemType) {
             setUpdateData={setUpdateData}
           />
         </td>
-        <td className="p-4 break-words dark:text-white">{todo.todo}</td>
+        <td
+          className="p-4 break-words font-bold  dark:text-white underline md:no-underline hover:underline cursor-pointer"
+          onClick={() => {
+            setShowModal(true);
+            setSelectedTodo(todo);
+          }}
+        >
+          {todo.todo}
+        </td>
         <td className="text-right py-4 text-sm text-slate-500 dark:text-slate-400">
           {convertMsToGermanDate(todo.timeStamp.seconds)}
         </td>
-
         <td className="p-4">
           <TbTrashX
             className="cursor-pointer text-lg dark:text-white"

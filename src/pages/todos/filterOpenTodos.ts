@@ -1,11 +1,5 @@
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
-export function filterOpenTodos(allTodos: Todo[]) {
+import { TodoProps } from "../../types/TodoProps";
+
+export function filterOpenTodos(allTodos: TodoProps[]) {
   return allTodos.filter((el) => !el.isDone);
 }

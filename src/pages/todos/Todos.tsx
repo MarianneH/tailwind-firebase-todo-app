@@ -6,23 +6,16 @@ import { useAuthContext } from "../../context/AuthContext";
 import { fetchTodosFromDb } from "./fetchTodoDataFromDb";
 import { filterClosedTodos } from "./filterClosedTodos";
 import { filterOpenTodos } from "./filterOpenTodos";
-
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
+import { TodoProps } from "../../types/TodoProps";
 
 function Todos() {
   const { currentUser } = useAuthContext();
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [openTodos, setOpenTodos] = useState<Todo[]>([]);
-  const [closedTodos, setClosedTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<TodoProps[]>([]);
+  const [openTodos, setOpenTodos] = useState<TodoProps[]>([]);
+  const [closedTodos, setClosedTodos] = useState<TodoProps[]>([]);
   const [updateData, setUpdateData] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState<TodoProps | undefined>();
   useEffect(() => {
     if (currentUser)
       fetchTodosFromDb(currentUser.uid).then((result) => {
@@ -42,14 +35,22 @@ function Todos() {
             todos={openTodos}
             done={false}
             setUpdateData={setUpdateData}
+            setSelectedTodo={setSelectedTodo}
+            setShowModal={setShowModal}
           />
           <div className="flex flex-col items-center mt-16 w-full">
-            <TodoTable todos={closedTodos} done setUpdateData={setUpdateData} />
+            <TodoTable
+              todos={closedTodos}
+              done
+              setUpdateData={setUpdateData}
+              setSelectedTodo={setSelectedTodo}
+              setShowModal={setShowModal}
+            />
           </div>
         </>
       )}
-      {showModal && todos[1] && (
-        <TodoModal selectedTodo={todos[1]} setShowModal={setShowModal} />
+      {showModal && selectedTodo && (
+        <TodoModal selectedTodo={selectedTodo} setShowModal={setShowModal} />
       )}
     </div>
   );
