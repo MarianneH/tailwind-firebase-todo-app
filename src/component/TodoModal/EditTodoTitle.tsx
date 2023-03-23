@@ -43,6 +43,7 @@ function EditTodoTitle({
             type="text"
             id="newTitle"
             name="newTitle"
+            className="px-2"
             defaultValue={selectedTodo.todo}
             autoFocus
           />
