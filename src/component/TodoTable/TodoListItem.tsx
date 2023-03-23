@@ -59,7 +59,6 @@ function TodoListItem({
         <td className="text-right py-4 text-sm text-slate-500 dark:text-slate-400">
           {convertMsToGermanDate(todo.timeStamp.seconds)}
         </td>
-
         <td className="p-4">
           <TbTrashX
             className="cursor-pointer text-lg dark:text-white"
