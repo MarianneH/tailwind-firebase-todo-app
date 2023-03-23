@@ -1,19 +1,11 @@
 import React, { Dispatch, SetStateAction, useEffect } from "react";
-
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
+import { TodoProps } from "../../types/TodoProps";
 
 function TodoModal({
   selectedTodo,
   setShowModal,
 }: {
-  selectedTodo: Todo;
+  selectedTodo: TodoProps;
   setShowModal: Dispatch<SetStateAction<boolean>>;
 }) {
   function handleClick() {
@@ -40,23 +32,18 @@ function TodoModal({
         {selectedTodo && (
           <div className="">
             <h1 className="mb-2">{selectedTodo.todo}</h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Voluptate rerum blanditiis commodi! Aspernatur suscipit mollitia
-              unde! Incidunt impedit commodi minima cum nesciunt iusto sapiente
-              eum! Nihil maxime accusamus facere praesentium. Culpa, doloremque,
-              consectetur optio quaerat ipsam molestiae mollitia qui vel
-              delectus saepe voluptatem omnis rem fugit aperiam quae, alias
-              deleniti officia id! Quibusdam ex consequuntur cumque amet sunt
-              cum veritatis! Atque corrupti quidem est molestias tempore ipsam
-              ex optio tempora cum minus, quaerat veritatis quas facere commodi
-              rerum consectetur architecto accusamus sit quasi reiciendis beatae
-              praesentium. Assumenda maxime minus obcaecati! Doloremque maxime
-              corporis, earum tempore dolorem iure voluptas explicabo, beatae
-              nostrum incidunt quod ipsa soluta aspernatur alias blanditiis
-              dolore provident voluptatum illo accusamus quia sequi, nobis sed
-              itaque! In, quia.
-            </p>
+            <ul>
+              <li className="hover:cursor-text group">
+                name: {selectedTodo.todo}{" "}
+                <span className="ml-4 hidden text-gray-500 group-hover:inline">
+                  edit
+                </span>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
           </div>
         )}
       </div>

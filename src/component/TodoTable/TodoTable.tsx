@@ -1,22 +1,22 @@
 import React, { Dispatch, SetStateAction } from "react";
 import TodoListItem from "./TodoListItem";
-
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
+import { TodoProps } from "../../types/TodoProps";
 
 interface TodoTableType {
-  todos: Todo[];
+  todos: TodoProps[];
   done: boolean;
   setUpdateData: Dispatch<SetStateAction<boolean>>;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+  setSelectedTodo: Dispatch<SetStateAction<TodoProps | undefined>>;
 }
 
-function TodoTable({ todos, done, setUpdateData }: TodoTableType) {
+function TodoTable({
+  todos,
+  done,
+  setUpdateData,
+  setShowModal,
+  setSelectedTodo,
+}: TodoTableType) {
   return (
     <table className="w-10/12 pt-6 bg-white dark:bg-gray-800 dark:text-white border-collapse rounded-lg text-sm">
       <thead className="font-medium">
@@ -36,6 +36,8 @@ function TodoTable({ todos, done, setUpdateData }: TodoTableType) {
                 index={index}
                 todo={el}
                 setUpdateData={setUpdateData}
+                setSelectedTodo={setSelectedTodo}
+                setShowModal={setShowModal}
               />
             </React.Fragment>
           );

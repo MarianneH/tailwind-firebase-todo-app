@@ -1,21 +1,14 @@
 import { db } from "../../firebase/firebase";
 import { getDocs, collection } from "firebase/firestore";
+import { TodoProps } from "../../types/TodoProps";
 
-interface Todo {
-  isDone: boolean;
-  todo: string;
-  timeStamp: {
-    seconds: number;
-  };
-  id: string;
-}
 export async function fetchTodosFromDb(currentUserId: string) {
-  let todos: Todo[] = [];
+  let todos: TodoProps[] = [];
   const querySnapshot = await getDocs(
     collection(db, "users", currentUserId, "todos")
   );
   querySnapshot.forEach((doc) => {
-    const el = { id: doc.id, ...doc.data() } as Todo;
+    const el = { id: doc.id, ...doc.data() } as TodoProps;
     todos.push(el);
   });
   return todos;
