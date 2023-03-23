@@ -48,7 +48,7 @@ function TodoListItem({
           />
         </td>
         <td
-          className="p-4 break-words dark:text-white hover:underline"
+          className="p-4 break-words font-bold  dark:text-white underline md:no-underline hover:underline cursor-pointer"
           onClick={() => {
             setShowModal(true);
             setSelectedTodo(todo);
