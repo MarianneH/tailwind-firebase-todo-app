@@ -19,7 +19,7 @@ function EditTodoTitle({
     <>
       {!editName ? (
         <div
-          className="inline group hover:cursor-text"
+          className="inline group hover:cursor-text ml-4"
           onClick={() => setEditName((prev) => !prev)}
         >
           <>
