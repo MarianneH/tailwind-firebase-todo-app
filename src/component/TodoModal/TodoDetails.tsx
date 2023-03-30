@@ -1,5 +1,6 @@
 import { TodoProps } from "@/types/TodoProps";
 import React, { Dispatch, SetStateAction } from "react";
+import CheckBoxInput from "./CheckBoxInput";
 import EditTodoTitle from "./EditTodoTitle";
 
 function TodoDetails({
@@ -28,20 +29,15 @@ function TodoDetails({
           </tr>
           <tr>
             <td>urgent:</td>
-            <input type="checkbox" id="urgent" name="urgent" className="ml-4" />
+            <CheckBoxInput name="urgent" selectedTodoId={selectedTodo.id} />
           </tr>
           <tr>
             <td>important:</td>
-            <input
-              type="checkbox"
-              id="important"
-              name="important"
-              className="ml-4"
-            />
+            <CheckBoxInput name="important" selectedTodoId={selectedTodo.id} />
           </tr>
           <tr>
             <td>daily task:</td>
-            <input type="checkbox" id="daily" name="daily" className="ml-4" />
+            <CheckBoxInput name="daily" selectedTodoId={selectedTodo.id} />
           </tr>
           <tr>
             <td>time estimate:</td>
@@ -51,10 +47,10 @@ function TodoDetails({
               <option value={0.5}>30 mins</option>
               <option value={0.75}>45 mins</option>
               <option value={1}>1 hour</option>
-              <option value={2}>2 hour</option>
-              <option value={3}>3 hour</option>
-              <option value={4}>1/2 day</option>
-              <option value={8}>1 day</option>
+              <option value={2}>2 hours</option>
+              <option value={3}>3 hours</option>
+              <option value={4}>4 hours</option>
+              <option value={8}>8 hours</option>
             </select>
           </tr>
         </tbody>

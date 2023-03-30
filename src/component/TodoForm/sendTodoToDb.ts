@@ -15,8 +15,6 @@ export const sendTodoToDb = async (
       todo: todo,
       timeStamp: timeStamp,
       isDone: false,
-      isUrgent: false,
-      isImportant: false,
     };
 
     e.currentTarget.todo.value = "";
