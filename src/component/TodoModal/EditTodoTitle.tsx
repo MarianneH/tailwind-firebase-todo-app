@@ -2,7 +2,7 @@ import { TodoProps } from "@/types/TodoProps";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { IoSaveOutline } from "react-icons/io5";
 import { useAuthContext } from "../../context/AuthContext";
-import { saveTodoTitleChangesToDb } from "./saveTodoTitleChangesToDb";
+import { updateTodoDbData } from "./updateTodoDbData";
 
 function EditTodoTitle({
   editName,
@@ -33,7 +33,10 @@ function EditTodoTitle({
         <form
           className="inline"
           onSubmit={(e) => {
-            saveTodoTitleChangesToDb(e, selectedTodo.id, currentUser.uid).then(
+            let data = {
+              todo: e.currentTarget.newTitle.value,
+            };
+            updateTodoDbData(data, selectedTodo.id, currentUser.uid).then(
               (response) => {
                 setTitleShown(response);
                 setTriggerFetchData((prev: boolean) => !prev);

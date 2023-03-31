@@ -5,6 +5,7 @@ interface DataProps {
   important?: boolean;
   urgent?: boolean;
   daily?: boolean;
+  todo?: string;
   [key: string]: any;
 }
 
@@ -14,5 +15,10 @@ export async function updateTodoDbData(
   currentUserId: string
 ) {
   await updateDoc(doc(db, "users", currentUserId, "todos", todoId), data);
-  return data;
+
+  if (data.todo) {
+    return data.todo;
+  } else {
+    return "data";
+  }
 }
