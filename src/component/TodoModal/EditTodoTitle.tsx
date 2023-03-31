@@ -13,7 +13,7 @@ function EditTodoTitle({
   setEditName: Dispatch<SetStateAction<boolean>>;
   selectedTodo: TodoProps;
 }) {
-  const { currentUser } = useAuthContext();
+  const { currentUser, setTriggerFetchData } = useAuthContext();
   const [titleShown, setTitleShown] = useState(selectedTodo.todo);
   return (
     <>
@@ -34,7 +34,10 @@ function EditTodoTitle({
           className="inline"
           onSubmit={(e) => {
             saveTodoTitleChangesToDb(e, selectedTodo.id, currentUser.uid).then(
-              (response) => setTitleShown(response)
+              (response) => {
+                setTitleShown(response);
+                setTriggerFetchData((prev: boolean) => !prev);
+              }
             );
             setEditName((prev) => !prev);
           }}

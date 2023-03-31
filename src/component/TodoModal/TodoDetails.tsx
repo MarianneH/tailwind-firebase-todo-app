@@ -15,7 +15,7 @@ function TodoDetails({
   return (
     <div className="">
       <h1 className="mb-2">{selectedTodo.todo}</h1>
-      <table className="leading-6">
+      <table className="leading-6 border-separate border-spacing-y-6">
         <tbody>
           <tr>
             <td>name:</td>
@@ -42,7 +42,7 @@ function TodoDetails({
           <tr>
             <td>time estimate:</td>
             <select name="time_estimate" id="time_estimate" className="ml-4">
-              <option value={undefined}>-</option>
+              <option value={undefined}>undefined</option>
               <option value={0.25}>15 mins</option>
               <option value={0.5}>30 mins</option>
               <option value={0.75}>45 mins</option>

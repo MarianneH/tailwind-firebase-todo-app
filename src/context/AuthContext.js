@@ -11,6 +11,7 @@ export function useAuthContext() {
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [triggerFetchData, setTriggerFetchData] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
@@ -31,6 +32,8 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         currentUser,
         setCurrentUser,
+        triggerFetchData,
+        setTriggerFetchData,
       }}
     >
       {loading ? null : children}

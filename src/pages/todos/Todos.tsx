@@ -9,7 +9,7 @@ import { filterOpenTodos } from "./filterOpenTodos";
 import { TodoProps } from "../../types/TodoProps";
 
 function Todos() {
-  const { currentUser } = useAuthContext();
+  const { currentUser, triggerFetchData } = useAuthContext();
   const [todos, setTodos] = useState<TodoProps[]>([]);
   const [openTodos, setOpenTodos] = useState<TodoProps[]>([]);
   const [closedTodos, setClosedTodos] = useState<TodoProps[]>([]);
@@ -23,7 +23,7 @@ function Todos() {
         setOpenTodos(filterOpenTodos(result));
         setClosedTodos(filterClosedTodos(result));
       });
-  }, [currentUser, updateData]);
+  }, [currentUser, updateData, triggerFetchData]);
 
   return (
     <div className="flex flex-col items-center mt-20 mb-40">

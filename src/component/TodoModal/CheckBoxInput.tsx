@@ -9,7 +9,7 @@ function CheckBoxInput({
   name: "urgent" | "important" | "daily";
   selectedTodoId: string;
 }) {
-  const { currentUser } = useAuthContext();
+  const { currentUser, setTriggerFetchData } = useAuthContext();
 
   return (
     <input
@@ -22,6 +22,7 @@ function CheckBoxInput({
           [name]: e.target.checked,
         };
         updateTodoDbData(data, selectedTodoId, currentUser.uid);
+        setTriggerFetchData((prev: boolean) => !prev);
       }}
     />
   );
