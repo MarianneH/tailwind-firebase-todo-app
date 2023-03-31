@@ -2,10 +2,6 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
 interface DataProps {
-  important?: boolean;
-  urgent?: boolean;
-  daily?: boolean;
-  todo?: string;
   [key: string]: any;
 }
 
