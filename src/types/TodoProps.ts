@@ -5,4 +5,7 @@ export interface TodoProps {
     seconds: number;
   };
   id: string;
+  urgent: boolean;
+  important: boolean;
+  daily: boolean;
 }

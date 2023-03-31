@@ -5,9 +5,11 @@ import { updateTodoDbData } from "./updateTodoDbData";
 function CheckBoxInput({
   name,
   selectedTodoId,
+  isChecked,
 }: {
   name: "urgent" | "important" | "daily";
   selectedTodoId: string;
+  isChecked: boolean;
 }) {
   const { currentUser, setTriggerFetchData } = useAuthContext();
 
@@ -16,6 +18,7 @@ function CheckBoxInput({
       type="checkbox"
       id={name}
       name={name}
+      defaultChecked={isChecked}
       className="ml-4"
       onChange={(e) => {
         let data = {

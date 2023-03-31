@@ -29,15 +29,27 @@ function TodoDetails({
           </tr>
           <tr>
             <td>urgent:</td>
-            <CheckBoxInput name="urgent" selectedTodoId={selectedTodo.id} />
+            <CheckBoxInput
+              name="urgent"
+              selectedTodoId={selectedTodo.id}
+              isChecked={selectedTodo.urgent}
+            />
           </tr>
           <tr>
             <td>important:</td>
-            <CheckBoxInput name="important" selectedTodoId={selectedTodo.id} />
+            <CheckBoxInput
+              name="important"
+              selectedTodoId={selectedTodo.id}
+              isChecked={selectedTodo.important}
+            />
           </tr>
           <tr>
             <td>daily task:</td>
-            <CheckBoxInput name="daily" selectedTodoId={selectedTodo.id} />
+            <CheckBoxInput
+              name="daily"
+              selectedTodoId={selectedTodo.id}
+              isChecked={selectedTodo.daily}
+            />
           </tr>
           <tr>
             <td>time estimate:</td>
